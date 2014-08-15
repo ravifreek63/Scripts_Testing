@@ -47,7 +47,7 @@ public class ShortestPath {
    Random rand = new Random();
    int numberQueries = 0, startNodeId, endNodeId;
    long totalTime = 0, nPaths = 0;
-   while (numberQueries < 100000){
+   while (numberQueries < 1000){
       startNodeId = rand.nextInt(NUM_NODES);
       endNodeId = rand.nextInt(NUM_NODES);
       startNode = getNode(graphDb, startNodeId);
@@ -62,7 +62,7 @@ public class ShortestPath {
      
       //System.out.println("Number of paths :" + nPaths);
       if (numberQueries % 100 == 0)
-      System.out.println("Query Rate = " + (double)numberQueries/totalTime);
+      System.out.println("Query Rate = " + (double)numberQueries/difference);
       numberQueries++;
    }
       System.out.println("TotalTime = " + totalTime);
