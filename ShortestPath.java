@@ -47,25 +47,27 @@ public class ShortestPath {
    Random rand = new Random();
    int numberQueries = 0, startNodeId, endNodeId;
    long totalTime = 0, nPaths = 0;
+      long lStartTime = new Date().getTime();
    while (numberQueries < 1000){
       startNodeId = rand.nextInt(NUM_NODES);
       endNodeId = rand.nextInt(NUM_NODES);
       startNode = getNode(graphDb, startNodeId);
       endNode = getNode(graphDb, endNodeId);
-      long lStartTime = new Date().getTime();
       Iterable<Path> paths = Path_Finder.findAllPaths(startNode, endNode);
-      long lEndTime = new Date().getTime();
-      long difference = lEndTime - lStartTime;
-      totalTime += difference;
+      //totalTime += difference;
       //System.out.println("Query completed..... Time taken = " + difference + " milliseconds. StartNode, EndNode" + startNodeId +"," + endNodeId);
       nPaths += IteratorUtil.count(paths);
      
       //System.out.println("Number of paths :" + nPaths);
-      if (numberQueries % 100 == 0)
-      System.out.println("Query Rate = " + (double)numberQueries/difference);
+     // if (numberQueries % 100 == 0){
+          
+       //   System.out.println("Query Rate = " + );
+     // }
       numberQueries++;
    }
-      System.out.println("TotalTime = " + totalTime);
+      long lEndTime = new Date().getTime();
+      long difference = lEndTime - lStartTime;
+      System.out.println("TotalTime = " + difference);
       System.out.println("TotalPaths = " + nPaths);
   }
 
