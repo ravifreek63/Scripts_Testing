@@ -131,9 +131,9 @@ public class ShortestPath {
    }
       long lEndTime = new Date().getTime();
       long difference = lEndTime - lStartTime;
-      System.out.println("TotalTime = " + difference);
-      System.out.println("TotalPaths = " + nPaths);
-      System.out.println("TotalEdges = " + nEdges);
+      System.out.println("TotalTime = " + difference + "seconds");
+      System.out.println("TotalPaths Per Millisecond = " + nPaths/difference);
+      System.out.println("TotalEdges Per Millisecond = " + nEdges/difference);
       bw.close();
     } catch(IOException e){
       System.out.println(e.toString());
