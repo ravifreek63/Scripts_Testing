@@ -1,2 +1,4 @@
 *.class
 run.sh
+config/*
+databases/*
