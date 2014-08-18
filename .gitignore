@@ -2,3 +2,7 @@
 run.sh
 config/*
 databases/*
+*.db
+*.cql
+create.sh
+import.sh
