@@ -24,6 +24,8 @@ public class ShortestPath {
   private static int NUM_NODES = 1048576;
   private static int NUM_QUERIES = 1000;
   private static int[][] Nodes = new int[NUM_QUERIES][2];
+  private static int SCALE = 20;
+  private static int EDGE_FACTOR = 4;
 
   private static Node getNode(GraphDatabaseService graph, int id){
   Transaction tx = graph.beginTx();
@@ -91,6 +93,10 @@ public class ShortestPath {
     }
   }
 
+ public static void loadArray(){
+    
+ }
+
   public static void main(String[] args){
         GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
         long lStartTime = new Date().getTime();
@@ -98,6 +104,7 @@ public class ShortestPath {
         long lEndTime = new Date().getTime();
         long difference = lEndTime - lStartTime;
         System.out.println("Time taken to load the database = " + difference/1000 + " seconds.");
+       // loadArray();
         Path_Finder = GraphAlgoFactory.allPaths(PathExpanders.allTypesAndDirections(), MAX_PATH);      
         runQueries(graphDb);
         graphDb.shutdown();

@@ -23,9 +23,9 @@ import java.io.InputStreamReader;
 
 public class BatchInsert{
 
-private static final String DB_PATH = "./databases/roadNet-CA.db";
-private static final String DATA_PATH = "/home/tandon/data/roadNet-CA.txt";
-private static final int NUM_NODES = 2000000;
+private static final String DB_PATH = "./databases/toy_21_4.db";
+private static final String DATA_PATH = "/home/tandon/data/toy_21_4.txt";
+private static final int NUM_NODES = 2097152;
 private GraphDatabaseService _graphDb;
 private static final int batchSize = 10000;
 private static RelationshipType connection = DynamicRelationshipType.withName("CONNECTED_TO");
@@ -58,9 +58,9 @@ try {
     Node from, to;
     String  thisLine = null;
     while ((thisLine = br.readLine()) != null) {
-      String[] parts = thisLine.split("\t");
-        from = _graphDb.getNodeById(Long.parseLong(parts[0]));
-        to = _graphDb.getNodeById(Long.parseLong(parts[1]));           
+      String[] parts = thisLine.split("\\s+");
+        from = _graphDb.getNodeById(Long.parseLong(parts[1]));
+        to = _graphDb.getNodeById(Long.parseLong(parts[2]));           
         createRelationBetween(from, to);
    }
 } catch(IOException e){
@@ -77,7 +77,7 @@ try {
 public void batchDb(){
         // START SNIPPET: batchDb
 GraphDatabaseService batchDb =
-                BatchInserters.batchDatabase( "databases/roadNet-CA.db");
+                BatchInserters.batchDatabase( "databases/toy_21_4.db");
         setGraphDB(batchDb);
         createNodes();
         createRelationShips();

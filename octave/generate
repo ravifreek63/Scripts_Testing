@@ -49,7 +49,7 @@ function ij = kronecker_generator (SCALE, edgefactor)
   %% Adjust to zero-based labels.
   ij = ij - 1;
   mat = ij.';
-  save /home/tandon/data/toy_26_16.txt mat
+  save /home/tandon/data/toy_21_4.txt mat
 endfunction
 
-kronecker_generator(25, 16);
+kronecker_generator(21, 4);
