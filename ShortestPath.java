@@ -66,8 +66,8 @@ public class ShortestPath {
        if(count > NUM_QUERIES)
           break;
        String[] parts = thisLine.split(",");
-       Nodes[count][0] = Integer.parseInt(parts[0]);
-       Nodes[count][1] = Integer.parseInt(parts[1]); 
+       Nodes[count-1][0] = Integer.parseInt(parts[0]);
+       Nodes[count-1][1] = Integer.parseInt(parts[1]); 
      }
      br.close();
    } catch (IOException e){
@@ -107,12 +107,12 @@ public class ShortestPath {
    FileWriter fw = new FileWriter("nodes_21_4.txt");
    BufferedWriter bw = new BufferedWriter(fw);
    while (numberQueries < NUM_QUERIES){
-      startNodeId = rand.nextInt(NUM_NODES);
-      endNodeId = rand.nextInt(NUM_NODES);
-      Nodes[numberQueries][0] = startNodeId; 
-      Nodes[numberQueries][1] = endNodeId;
-      String content = Integer.toString(startNodeId) + "," + Integer.toString(endNodeId) + "\n";
-      bw.write(content);
+      startNodeId = Nodes[numberQueries][0] ;//rand.nextInt(NUM_NODES);
+      endNodeId = Nodes[numberQueries][1]; //rand.nextInt(NUM_NODES);
+      //Nodes[numberQueries][0] = startNodeId; 
+      //Nodes[numberQueries][1] = endNodeId;
+      //String content = Integer.toString(startNodeId) + "," + Integer.toString(endNodeId) + "\n";
+      //bw.write(content);
       startNode = getNode(graphDb, startNodeId);
       endNode = getNode(graphDb, endNodeId);
       Iterable<Path> paths = Path_Finder.findAllPaths(startNode, endNode);
